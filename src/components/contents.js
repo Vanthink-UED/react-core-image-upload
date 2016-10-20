@@ -8,7 +8,8 @@ let Contents = React.createClass({
         x: 0,
         y: 0,
         w: 0,
-        y: 0,
+        h: 0,
+        src: 'http://img1.vued.vanthink.cn/vuede743f1f8b65af500bdbaac67d7b664f9.png',
       }
     };
   },
@@ -37,7 +38,11 @@ let Contents = React.createClass({
         <div className="content pure-u-4-5">
           <div className="pure-g">
             <div className="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-      
+            <div className="user">
+               <img className="avatar" src={this.state.cropArgs.src}/>
+             </div>
+             <ReactCoreImageUpload text={"Crop Your Image"} class={['pure-button', 'pure-button-primary', 'js-btn-crop']} inputOfFile={'files'} url={'http://101.198.151.190/api/upload.php'} crop={true} imageUploaded={this.handleCropRes}></ReactCoreImageUpload>
+              <p>Click button to crop your image</p>
               <h3>Crop Arguments</h3>
               <table className="pure-table" style={{width:'100%'}}>
                 <thead>
@@ -68,6 +73,18 @@ let Contents = React.createClass({
     console.log(res);
     this.setState({
       src: res.data.src
+    });
+  },
+  
+  handleCropRes(res) {
+    this.setState({
+      cropArgs:{
+        src: 'http://img1.vued.vanthink.cn/vuedff07db9e592f103e0f8108bc633d2663.png',
+        x: res.data.x,
+        y: res.data.y,
+        w: res.data.w,
+        h: res.data.h
+      }
     });
   }
 });

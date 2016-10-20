@@ -144,14 +144,14 @@
 }
 
 .g-core-image-corp-container .btn-upload {
-  background: #27ae60;
-  border-color: #27ae60;
+  background: #2d2d2d;
+  border-color: #3d3d3d;
   color: #fff;
 }
 
 .g-core-image-corp-container .btn-upload:hover {
-  background: #2dc26c;
-  border-color: #27ae60;
+  background: #222;
+  border-color: #222;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
 }
 
@@ -163,18 +163,35 @@
 .g-core-image-corp-container .g-crop-image-box .select-recorte {
   position: absolute;
   background: #fff;
-  opacity: .5;
-  border: 2px dashed #555;
+  opacity: .25;
+  border: 1px solid #0074d9;
   cursor: move;
 }
-
+.g-core-image-corp-container .three-cols-hor{
+  position: absolute;
+  top:0;
+  height: 100%;
+  left:33.333%;
+  width:33.333%;
+  border-left:1px dashed rgba(0,0,0,.8);
+  border-right:1px dashed rgba(0,0,0,.8);
+}
+.g-core-image-corp-container .three-cols-ver{
+  position: absolute;
+  left:0;
+  width: 100%;
+  top:33.333%;
+  height:33.333%;
+  border-top:1px dashed rgba(0,0,0,.8);
+  border-bottom:1px dashed rgba(0,0,0,.8);
+}
 .g-core-image-corp-container .g-resize {
   z-index: 90;
   position: absolute;
-  bottom: 1px;
-  right: 1px;
-  width: 20px;
-  height: 20px;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
   cursor: se-resize;
 }
 
@@ -182,9 +199,9 @@
   content: '';
   display: block;
   position: absolute;
-  background: #000;
-  width: 5px;
-  height: 5px;
+  background: #0074d9;
+  width: 4px;
+  height: 4px;
   right: 0;
   bottom: 0;
 }

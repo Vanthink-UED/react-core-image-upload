@@ -2,6 +2,14 @@
   "name": "react-core-image-upload",
   "version": "0.9.1",
   "description": "a component for image to upload and crop",
+  "keywords": [
+    "react",
+    "iamge",
+    "upload",
+    "crop",
+    "component",
+    "core"
+  ],
   "main": "src/react-core-image-upload.js",
   "repository": {
     "url": "https://github.com/Vanthink-UED/react-core-image-upload.git",
@@ -15,8 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "react": "^15.4.0-rc.4",
-    "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-dom": "^15.3.2"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -26,6 +33,7 @@
     "babel-preset-react": "^6.16.0",
     "history": "^4.3.0",
     "react-hot-loader": "^3.0.0-beta.6",
+    "style-loader": "*",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },
