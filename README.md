@@ -1,2 +1,5 @@
 # react-core-image-upload
-a component for image to upload and crop
+
+<img src="./shots/REACT-CORE-IMAGE-UPLOAD-LOGO.png" />
+
+A component for image to upload and crop

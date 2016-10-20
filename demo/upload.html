@@ -1,0 +1,138 @@
+
+<html lang="zh-cn">
+<head>
+    <title>React-core-image-upload A component for image to upload and crop</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster"/>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/hint.css/2.4.0/hint.min.css" />
+    <link rel="stylesheet" href="./page.css">
+    <link rel="stylesheet" href="http://s1.vued.vanthink.cn/211cd6e325e7/googlecode.css">
+</head>
+
+<body>
+<a href="https://github.com/Vanthink-UED/vue-core-image-upload" title="Fork me on GitHub" className="github-corner"><svg width="80" height="80" viewbox="0 0 250 250"><title>Fork me on GitHub</title><path d="M0 0h250v250"></path><path d="M127.4 110c-14.6-9.2-9.4-19.5-9.4-19.5 3-7 1.5-11 1.5-11-1-6.2 3-2 3-2 4 4.7 2 11 2 11-2.2 10.4 5 14.8 9 16.2" fill="currentColor" style="transform-origin:130px 110px" className="octo-arm"></path><path d="M113.2 114.3s3.6 1.6 4.7.6l15-13.7c3-2.4 6-3 8.2-2.7-8-11.2-14-25 3-41 4.7-4.4 10.6-6.4 16.2-6.4.6-1.6 3.6-7.3 11.8-10.7 0 0 4.5 2.7 6.8 16.5 4.3 2.7 8.3 6 12 9.8 3.3 3.5 6.7 8 8.6 12.3 14 3 16.8 8 16.8 8-3.4 8-9.4 11-11.4 11 0 5.8-2.3 11-7.5 15.5-16.4 16-30 9-40 .2 0 3-1 7-5.2 11l-13.3 11c-1 1 .5 5.3.8 5z" fill="currentColor" className="octo-body"></path></svg><style> .github-corner svg{position:absolute;right:0;top:0;;color:#2D2D2D;fill:white;}.github-corner:hover .octo-arm{animation:octocat-wave .56s;}@keyframes octocat-wave{0%, 100%{transform:rotate(0);}20%, 60%{transform:rotate(-20deg);}40%, 80%{transform:rotate(10deg);}}</style></a>
+<div className="splash-container">
+    
+    <div className="splash">
+        <h1 className="splash-head">
+            <img width="360" src="./images/REACT-CORE-IMAGE-UPLOAD-LOGO.png" alt="logo" />
+        </h1>
+        <p className="splash-subhead">
+             A component for image to upload and crop
+        </p>
+    </div>
+</div>
+<div className="content-wrapper">
+    <div id="app">
+      <h3 className="content-subhead">
+          Get Started
+      </h3>
+      <div className="content pure-u-4-5">
+          <div className="pure-g">
+              <div className="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                  <div className="user">
+                      <img className="avatar" v-bind:src="src"/>
+                  </div>
+                  <vue-core-image-upload v-bind:className="['pure-button','pure-button-primary','js-btn-crop']" v-bind:crop="false" url="http://101.198.151.190/api/upload.php" extensions="png,gif,jpeg,jpg" input-accept="image/*"></vue-core-image-upload>
+                  <p>Click button to upload your image</p>
+                  <pre className="highlight javascript"><code>
+  import VueCoreImageUpload  from './vue.core.image.upload.vue';
+
+  new Vue({
+    el: '#app',
+    components: {
+      'vue-core-image-upload': VueCoreImageUpload
+    },
+    data: {
+      src: 'http://img1.vued.vanthink.cn/vued0a233185b6027244f9d43e653227439a.png',
+    },
+    methods: {
+
+    },
+    events: {
+      imageUploaded(res) {
+        if (res.errcode == 0) {
+          this.src = 'http://img1.vued.vanthink.cn/vued751d13a9cb5376b89cb6719e86f591f3.png';
+        }
+      }
+    },
+  });
+                  </code></pre>
+                  <h4>HTML</h4>
+                  <pre className="highlight html"><code>
+   &lt;vue-core-image-upload 
+    v-bind:className="['pure-button','pure-button-primary','js-btn-crop']" 
+    v-bind:crop="false" url="./crop.php" 
+    extensions="png,gif,jpeg,jpg"&gt;
+  &lt;/vue-core-image-upload&gt;               
+                  </code></pre>
+
+
+              </div>
+
+          </div>
+
+
+      </div>
+      <h3 className="content-subhead">
+          Crop Image 
+      </h3>
+      <div className="content pure-u-4-5">
+          <div className="pure-g">
+              <div className="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                  <div className="user">
+                      <img className="avatar" v-bind:src="cropSrc"/>
+                      <p>{{name}}</p>
+                  </div>
+                <vue-core-image-upload  crop-ratio="1:1" v-bind:className="['pure-button','pure-button-primary','js-btn-crop']" v-bind:crop="true" url="./crop.php" extensions="png,gif,jpeg,jpg" input-accept="image/*"></vue-core-image-upload>
+                <h3>Crop Arguments</h3>
+                <table className="pure-table" style="width:100%;">
+                  <thead>
+                    <tr>
+                      <th>H</th>
+                      <th>W</th>
+                      <th>X</th>
+                      <th>Y</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{cropArgs.toCropImgH}}</td>
+                      <td>{{cropArgs.toCropImgW}}</td>
+                      <td>{{cropArgs.toCropImgX}}</td>
+                      <td>{{cropArgs.toCropImgY}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <pre className="highlight html"><code>
+  &lt;vue-core-image-upload  
+    crop-ratio="1:1" 
+    v-bind:className="['pure-button','pure-button-primary','js-btn-crop']" 
+    v-bind:crop="true" 
+    url="./crop.php" 
+    extensions="png,gif,jpeg,jpg"&gt;
+  &lt;/vue-core-image-upload&gt;
+                  </code></pre>
+                  <h3 style="padding-top:40px;"><a href="https://github.com/Vanthink-UED/vue-core-image-upload" className="button-xlarge pure-button pure-button-radius" href="">DOWNLOAD AND DOCUMENT</a></h3>
+              </div>
+           </div>
+      </div>
+    </div>
+    
+
+</div>
+<script src="https://cdn.jsdelivr.net/highlight.js/9.2.0/highlight.min.js"></script>  
+<script>hljs.initHighlightingOnLoad();</script>
+<script  src="http://localhost:9000/build/bundle.js"></script>    
+
+</body>
+
+</html>
