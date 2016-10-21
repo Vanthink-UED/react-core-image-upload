@@ -49,7 +49,10 @@ let App = React.createClass({
 
 ```
 
-### Options
+Run demo
+[http://localhost:9000/webpack-dev-server/demo/index.html](http://localhost:9000/webpack-dev-server/demo/index.html)
+
+
 
 ### Options
 
