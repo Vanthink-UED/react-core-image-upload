@@ -24,6 +24,7 @@ class ReactCoreImageUpload extends Component {
       formID: 'g-core-upload-input-' + Math.floor(Math.random() * 10000),
       uploading: false,
       hasImage:false,
+      class:  this.props.class.join(' '),
       image: {
         src: 'http://img1.vued.vanthink.cn/vuedcb0efb21e5f2ca013ca1480198bbf4b3.png',
         width:0,
@@ -35,7 +36,7 @@ class ReactCoreImageUpload extends Component {
   
   render() {
     return (
-      <div className={this.props.class.join(' ')} id={this.state.formID}>
+      <div className={this.state.class} id={this.state.formID}>
         {this.props.text}
         <form className="g-core-image-upload-form" method="post" encType="multipart/form-data" action="" style={{display: 'block', cursor: 'pointer', position: 'absolute', left: 0, top: 0, width: 1242, height: 61, opacity: 0, margin: 0, padding: 0, overflow: 'hidden'}}>
           <input disabled={this.state.uploading}  onChange={this.change.bind(this)} name={this.props.inputOfFile} type="file" accept={this.props.inputAccept}  style={{width: '100%', height: '100%'}} />
@@ -46,8 +47,6 @@ class ReactCoreImageUpload extends Component {
               <div className="g-crop-image-principal">
                 <img src={this.state.image.src} style={{ width:this.state.image.width,height:this.state.image.height}} />
                 <div className="select-recorte" onMouseDown={this.drag.bind(this)} onTouchStart={this.drag.bind(this)} style={{width:100,height:100}} >
-                  <div className="three-cols-hor"></div>
-                  <div className="three-cols-ver"></div>
                   <div className="g-s-resize"></div>
                   <div className="g-e-resize"></div>
                   <div className="g-resize" onTouchStart={this.resize.bind(this)} onMouseDown={this.resize.bind(this)}></div>
@@ -257,8 +256,8 @@ class ReactCoreImageUpload extends Component {
         callback();
       }
       self.uploading = false;
-      if(self.crop) {
-          self.hasImage = false;
+      if(self.props.crop) {
+          self.cancel();
        } 
        self.props.imageUploaded(res);
     });  
@@ -278,9 +277,6 @@ class ReactCoreImageUpload extends Component {
     let dragObj = new Drag($el,$container,e);
   }
     
-    
-  
-  
   
 }
 

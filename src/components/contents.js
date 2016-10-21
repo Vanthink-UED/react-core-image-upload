@@ -41,7 +41,7 @@ let Contents = React.createClass({
             <div className="user">
                <img className="avatar" src={this.state.cropArgs.src}/>
              </div>
-             <ReactCoreImageUpload text={"Crop Your Image"} class={['pure-button', 'pure-button-primary', 'js-btn-crop']} inputOfFile={'files'} url={'http://101.198.151.190/api/upload.php'} crop={true} imageUploaded={this.handleCropRes}></ReactCoreImageUpload>
+             <ReactCoreImageUpload text={"Crop Your Image"} class={['pure-button', 'pure-button-primary', 'js-btn-crop']} inputOfFile={'files'} url={'http://101.198.151.190/api/crop.php'} crop={true} imageUploaded={this.handleCropRes}></ReactCoreImageUpload>
               <p>Click button to crop your image</p>
               <h3>Crop Arguments</h3>
               <table className="pure-table" style={{width:'100%'}}>
@@ -80,10 +80,10 @@ let Contents = React.createClass({
     this.setState({
       cropArgs:{
         src: 'http://img1.vued.vanthink.cn/vuedff07db9e592f103e0f8108bc633d2663.png',
-        x: res.data.x,
-        y: res.data.y,
-        w: res.data.w,
-        h: res.data.h
+        x: parseInt(res.data.post.toCropImgX),
+        y: parseInt(res.data.post.toCropImgY),
+        w: parseInt(res.data.post.toCropImgW),
+        h: parseInt(res.data.post.toCropImgH)
       }
     });
   }

@@ -90,23 +90,6 @@
   width: 100%;
 }
 
-.g-core-image-corp-container .info-aside .config-info .image-details {
-  width: 100%;
-  color: #999;
-}
-
-.g-core-image-corp-container .info-aside .config-info .image-details td {
-  border: none;
-  line-height: 24px;
-}
-
-.g-core-image-corp-container .info-aside .config-info .image-details tr td:first-child {
-  width: 36%;
-}
-
-.g-core-image-corp-container .info-aside .config-info .image-details tr td:last-child {
-  color: #555;
-}
 
 .g-core-image-corp-container .btn-groups {
   text-align: right;
@@ -167,24 +150,7 @@
   border: 1px solid #0074d9;
   cursor: move;
 }
-.g-core-image-corp-container .three-cols-hor{
-  position: absolute;
-  top:0;
-  height: 100%;
-  left:33.333%;
-  width:33.333%;
-  border-left:1px dashed rgba(0,0,0,.8);
-  border-right:1px dashed rgba(0,0,0,.8);
-}
-.g-core-image-corp-container .three-cols-ver{
-  position: absolute;
-  left:0;
-  width: 100%;
-  top:33.333%;
-  height:33.333%;
-  border-top:1px dashed rgba(0,0,0,.8);
-  border-bottom:1px dashed rgba(0,0,0,.8);
-}
+
 .g-core-image-corp-container .g-resize {
   z-index: 90;
   position: absolute;

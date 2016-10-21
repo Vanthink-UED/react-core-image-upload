@@ -1,48 +1,50 @@
 /** Drag
-* @param $el dragged element
-* @param $el the container of dragged element
-* @param e event object
-**/
+ * @param $el dragged element
+ * @param $el the container of dragged element
+ * @param e event object
+ **/
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-let moveHandler,upHandler;
+let moves , stopM, drags, stopD;
+// 拖拽
 class Drag {
   constructor($el, $container, e) {
-
+    let self = this;
     this.el = $el;
     this.container = $container;
     this.coor = {
-      x: (isMobile ? e.touches[0]['clientX'] : e.clientX) - $el.offsetLeft - $el.parentElement.offsetLeft,
-      y: (isMobile ? e.touches[0]['clientY'] : e.clientY) - $el.offsetTop - $el.parentElement.offsetTop,
+      x: (isMobile ? e.touches[0]['clientX'] : e.clientX) - $el.offsetLeft - $el.parentElement.offsetLeft - document.getElementsByClassName('image-aside')[0].offsetLeft,
+      y: (isMobile ? e.touches[0]['clientY'] : e.clientY) - $el.offsetTop - $el.parentElement.offsetTop - document.getElementsByClassName('image-aside')[0].offsetTop,
       posX: isMobile ? e.touches[0]['clientX'] : e.clientX,
       posy: isMobile ? e.touches[0]['clientY'] : e.clientY,
       maxLeft: parseInt(this.container.style.width) - parseInt(this.el.style.width),
       maxTop: parseInt(this.container.style.height) - parseInt(this.el.style.height),
     };
-    let self = this;
-    moveHandler = function(e) {
+    moves = function (e) {
       self.move(e);
     }
-    upHandler = function() {
-      self.stopMove();
+    stopM = function (e) {
+      self.stopMove(e);
     }
     if (isMobile) {
-      this.container.addEventListener('touchmove', moveHandler, false);
-      this.container.addEventListener('touchend', upHandler, false);
+      document.addEventListener('touchmove', moves, false);
+      document.addEventListener('touchend', stopM, false);
       return;
     }
-    this.container.addEventListener('mousemove', moveHandler, false);
-    this.container.addEventListener('mouseup', upHandler, false);
+    document.addEventListener('mousemove', moves, false);
+    document.addEventListener('mouseup', stopM, false);
   }
 
   move(e) {
     if (!this.el) {
       return;
     }
-    this.coor.posX = isMobile ? e.changedTouches[0]['clientX'] : e.clientX;
-    this.coor.posY = isMobile ? e.changedTouches[0]['clientY'] : e.clientY;
-    let newPosX = this.coor.posX - this.coor.x;
-    let newPosY = this.coor.posY - this.coor.y;
+    // this.coor.posX = isMobile ? e.changedTouches[0]['clientX']:e.clientX;
+    // this.coor.posY = isMobile ? e.changedTouches[0]['clientY']:e.clientY;
+    var aa = isMobile ? e.changedTouches[0]['clientX'] : e.clientX;
+    var bb = isMobile ? e.changedTouches[0]['clientY'] : e.clientY;
+    var newPosX = aa - this.el.parentElement.offsetLeft - document.getElementsByClassName('image-aside')[0].offsetLeft - this.coor.x;
+    var newPosY = bb - this.el.parentElement.offsetTop - document.getElementsByClassName('image-aside')[0].offsetTop - this.coor.y;
     if (newPosX <= 0) {
       newPosX = 0;
     }
@@ -60,18 +62,15 @@ class Drag {
   }
 
   stopMove() {
+    var self = this;
     this.el = null;
     if (isMobile) {
-      this.container.removeEventListener('touchmove', moveHandler, false);
-      this.container.removeEventListener('touchend', upHandler, false);
-      
-    }else{
-      this.container.removeEventListener('mousemove', moveHandler, false);
-      this.container.removeEventListener('mouseup', upHandler, false);
+      document.removeEventListener('touchmove', moves, false);
+      document.removeEventListener('touchend', stopM, false);
+      return;
     }
-    
-    moveHandler = upHandler = null;
-    
+    document.removeEventListener('mousemove', moves, false);
+    document.removeEventListener('mouseup', stopM, false);
   }
 
 };

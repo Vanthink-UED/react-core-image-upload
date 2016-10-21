@@ -4,12 +4,15 @@ module.exports = {
   entry: [
       "webpack-dev-server/client?http://localhost:9000",
       'webpack/hot/only-dev-server',
-      "./src/index"
+      "./src/react-core-image-upload"
     ],
   output: {
-    path: __dirname + '/build',
-    filename: "bundle.js",
-    publicPath: '/build/',
+    path: __dirname + '/',
+    filename: "react-core-image-upload.js",
+  },
+  externals: {
+    "react":"React",
+    "react-dom":'ReactDOM'
   },
   
   module: {
@@ -28,6 +31,13 @@ module.exports = {
   },
   plugins: [
       new webpack.NoErrorsPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.optimize.UglifyJsPlugin( {
+        minimize : true,
+        sourceMap : false,
+        mangle: true,
+        compress: {
+          warnings: false
+        }
+      } )
     ]
 };
