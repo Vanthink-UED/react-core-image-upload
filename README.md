@@ -33,7 +33,7 @@ let App = React.createClass({
           text="Upload Your Image"
           class={['pure-button', 'pure-button-primary', 'js-btn-crop']} 
           inputOfFile="files"
-          url="http://101.198.151.190/api/upload.php"
+          url="./api/upload.php"
           imageUploaded={this.handleRes}>
         </ReactCoreImageUpload>
       </div>
@@ -49,13 +49,15 @@ let App = React.createClass({
 
 ```
 
+
+
 ### Run demo
 ``` bash
 yarn run start
 ```
 [http://localhost:9000/webpack-dev-server/demo/index.html](http://localhost:9000/webpack-dev-server/demo/index.html)
 
-
+[Demo Online](http://vanthink-ued.github.io/react-core-image-upload/upload.html)
 
 ### Options
 
