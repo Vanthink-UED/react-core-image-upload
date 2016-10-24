@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-core-image-upload.svg?maxAge=2592000)]()
 ![Node Version](https://img.shields.io/node/v/react-core-image-upload.svg "Node Version")
+[![Build Status](https://travis-ci.org/Vanthink-UED/react-core-image-upload.svg?branch=master)](https://travis-ci.org/Vanthink-UED/react-core-image-upload)
 
 <img src="./shots/REACT-CORE-IMAGE-UPLOAD-LOGO.png" height="180"/>
 
