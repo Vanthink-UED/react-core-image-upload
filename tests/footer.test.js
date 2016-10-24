@@ -3,9 +3,6 @@ import { shallow, mount, render } from 'enzyme';
 import Footer from '../src/components/footer';
 
 describe('Footer Component Tests', function () {
-  it('contains an icon list wrap',function() {
-    expect(shallow(<Footer />).find('.icon-list').length).toBe(1);
-  })
   it('contains copyright words',function() {
     expect(shallow(<Footer />).contains(<p className="other-info">All Rights Reserved By Vanthink-UED</p>)).toEqual(true);
   })
