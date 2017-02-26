@@ -6,21 +6,24 @@
 
 <img src="./shots/react-core-image-upload.jpg" width="320" />
 
-A component for image to upload and crop
+一款轻量级的图片上传裁剪组件
+
+[English Doc]('./README.md')
 
 
-### Install
-Use Npm
+
+### 快速开始
+使用 npm
 ```bash
 npm install react-core-image-upload --save-dev
 ```
 
-Use yarn
+使用 yarn
 ``` bash
 yarn add react-core-image-upload
 ```
 
-### How to use
+### 使用ES6 进行开发
 ``` js
 import React from 'react';
 import ReactCoreImageUpload  from '../react-core-image-upload';
@@ -52,7 +55,7 @@ let App = React.createClass({
 
 
 
-### Run demo
+### 运行DEMO
 ``` bash
 yarn run start
 ```
@@ -60,30 +63,30 @@ yarn run start
 
 [Demo Online](http://vanthink-ued.github.io/react-core-image-upload/upload.html)
 
-### Options
+### 配置属性
 
 | Props        | Type         | Example  | Description  |
 | ------------- |:----------| ---------|--------------|
-| url     | String | '/crop.php' | your server url |
-| text      | String      |  'Upload Image' | the text you want to show |
-| inputOfFile | String     |   'file' | upload file form name |
-| extensions | String   |    'png,jpg,gif' | limit the file type |
-| crop | Boolean   |   true | if need crop image |
-| cropRatio | String   |   '1:1' | limit the cropped image shape|
-| cropBtn | Object   |   {ok:'Save','cancel':'Give Up'} | the text of crop button|
-| maxFileSize | Number   |   10485760(10M) | limit the file size|
-| maxWidth | Number   |   150 | limit the width of your image you cropped|
-| maxheight | Number   |   150 | limit the height of your image you cropped|
-| inputAccept | string   |  'image/*' / 'image/jpg,image/jpeg,image/png' |  the image file of accept type |
-| isXhr | Boolean  | true  |  cancel default xhr uploading 
-| headers | Object  | {auth: xxxxx}  |  the http header to send server 
+| url     | String | '/crop.php' | 服务端上传的地址 |
+| text      | String      |  'Upload Image' | 你需要显示按钮的文本 |
+| inputOfFile | String     |   'file' | 	上传服务端对应表单 name |
+| extensions | String   |    'png,jpg,gif' | 限制的图片类型 |
+| crop | Boolean   |   true | 是否需要裁剪 |
+| cropRatio | String   |   '1:1' | 限制裁剪的形状|
+| cropBtn | Object   |   {ok:'Save','cancel':'Give Up'} |按钮文本|
+| maxFileSize | Number   |   10485760(10M) | 文件大小限制|
+| maxWidth | Number   |   150 | 限制裁剪图片的最大宽度|
+| maxheight | Number   |   150 | 限制裁剪图片的最大高度|
+| inputAccept | string   |  'image/*' / 'image/jpg,image/jpeg,image/png' | 赋予上传file的接受类型|
+| isXhr | Boolean  | true  |  是否需要调用系统内自己的上传功能 
+| headers | Object  | {auth: xxxxx}  |  设置xhr上传 的header
 
 ### image uploading callback
 
-+ `imageUploaded`:  when you finish your image uploading
-+ `imageChanged`: when the input file has changed
-+ `imageUploading` when your image is uploading
-+ `errorHandle` when image uploading meet some error
++ `imageUploaded`:  当图片上传成功后的响应处理
++ `imageChanged`: 当选择图片后
++ `imageUploading` 图片上传过程中
++ `errorHandle`图片上传中的异常处理
 
 
 [Demo](http://vanthink-ued.github.io/react-core-image-upload/upload.html)
@@ -91,20 +94,15 @@ yarn run start
 [Demo Source](https://github.com/Vanthink-UED/react-core-image-upload/blob/master/src/components/contents.js)
 
 
-### Server Crop Arguments
+### 发给服务端的裁剪参数
 
 If you crop a image , your crop will send a request to your server with some crop arguments;
 
                         
 <img src="./shots/vuedba0ed377b88fc84d51026310efcb255b.png" />
 
+参数如上图。
 
-+ `toCropImgX`: the distance of cropbox to the image left;
-+ `toCropImgY`: the distance of cropbox to the image top
-+ `toCropImgW`: the width of cropbox
-+ `toCropImgH`: the height of cropbox
-+ `maxWidth`: the maxium width of your target image 
-+ `maxHeight`: the maxium height of your target image 
-If you want to change the crop window style , you should write your own css files.
+如果你需要自定义裁剪弹窗的的样式，你可以自己写css进行覆盖
 
 ### MIT Liscense 

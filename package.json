@@ -1,6 +1,6 @@
 {
   "name": "react-core-image-upload",
-  "version": "0.9.6",
+  "version": "1.0.0",
   "description": "a component for image to upload and crop",
   "keywords": [
     "react",
@@ -36,6 +36,11 @@
     "babel-preset-react": "^6.16.0",
     "browserify": "^13.1.0",
     "enzyme": "^2.5.1",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "expect": "^1.20.2",
     "history": "^4.3.0",
     "jasmine-core": "^2.5.2",
