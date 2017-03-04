@@ -8,7 +8,7 @@
 
 A component for image to upload and crop
 
-[中文文档](./READMD-ZH.md)
+[中文文档](./README-ZH.md)
 
 ### Install
 Use Npm
