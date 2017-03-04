@@ -8,6 +8,7 @@
 
 A component for image to upload and crop
 
+[中文文档](./READMD-ZH.md)
 
 ### Install
 Use Npm
@@ -51,11 +52,11 @@ let App = React.createClass({
 ```
 
 
-
 ### Run demo
 ``` bash
-yarn run start
+npm run start
 ```
+
 [http://localhost:9000/webpack-dev-server/demo/index.html](http://localhost:9000/webpack-dev-server/demo/index.html)
 
 [Demo Online](http://vanthink-ued.github.io/react-core-image-upload/upload.html)
