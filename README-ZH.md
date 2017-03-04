@@ -14,7 +14,7 @@
 ### 快速开始
 使用 npm
 ```bash
-npm install react-core-image-upload --save-dev
+npm install react-core-image-upload --save
 ```
 
 使用 yarn

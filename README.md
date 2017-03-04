@@ -4,7 +4,7 @@
 ![Node Version](https://img.shields.io/node/v/react-core-image-upload.svg "Node Version")
 [![Build Status](https://travis-ci.org/Vanthink-UED/react-core-image-upload.svg?branch=master)](https://travis-ci.org/Vanthink-UED/react-core-image-upload)
 
-<img src="./shots/react-core-image-upload.jpg" width="320" />
+<img src="http://img1.vued.vanthink.cn/vued4196249d82e15d09c66af279cc1818eb.jpeg" width="320" />
 
 A component for image to upload and crop
 
@@ -13,7 +13,7 @@ A component for image to upload and crop
 ### Install
 Use Npm
 ```bash
-npm install react-core-image-upload --save-dev
+npm install react-core-image-upload --save
 ```
 
 Use yarn
