@@ -24,7 +24,7 @@ yarn add react-core-image-upload
 ### How to use
 ``` js
 import React from 'react';
-import ReactCoreImageUpload  from '../react-core-image-upload';
+import ReactCoreImageUpload  from 'react-core-image-upload';
 let App = React.createClass({ 
 //...
 

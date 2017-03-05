@@ -25,7 +25,7 @@ yarn add react-core-image-upload
 ### 使用ES6 进行开发
 ``` js
 import React from 'react';
-import ReactCoreImageUpload  from '../react-core-image-upload';
+import ReactCoreImageUpload  from 'react-core-image-upload';
 let App = React.createClass({ 
 //...
 
