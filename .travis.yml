@@ -3,7 +3,7 @@ node_js:
   - 5.0
   - 6.0
   - 7.0
-script: node_modules/karma/bin/karma start ./karma.conf.js --browsers ["chrome"] --singleRun
+script: node_modules/karma/bin/karma start ./karma.conf.js --browsers ["Chrome"] 
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
