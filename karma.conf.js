@@ -1,6 +1,6 @@
 var path = require('path');
 
-let browsers = ['Chrome'];
+var browsers = ['Chrome'];
 // trvis env
 
 if (process.env.TRAVIS) {
