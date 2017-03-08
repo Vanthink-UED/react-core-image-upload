@@ -1,5 +1,13 @@
 var path = require('path');
 
+let browsers = ['Chrome'];
+// trvis env
+
+if (process.env.TRAVIS) {
+  browsers = ['Chrome_travis_ci'];
+}
+
+
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -49,18 +57,24 @@ module.exports = function(config) {
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
     ],
-
-
+    
     babelPreprocessor: {
       options: {
         presets: ['airbnb']
       }
     },
     reporters: ['progress'],
+    // custom launchers 
+    customLaunchers: {
+        Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+        }
+    },
     // port: 9002,
     logLevel: config.LOG_INFO,
-    browsers: ['Chrome'],
-    singleRun: false,
+    browsers: browsers,
+    singleRun: false
   })
   
 };
