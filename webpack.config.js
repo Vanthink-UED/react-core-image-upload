@@ -21,7 +21,7 @@ module.exports = {
       },
 
       {
-        test: /\.css/,
+        test: /\.ope/,
         loader: "style!css"
       }
         ]
