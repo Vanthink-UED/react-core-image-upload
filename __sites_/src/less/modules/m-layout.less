@@ -1,0 +1,215 @@
+/** layout **/
+.container {
+    position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    height: 70px;
+    background: #fff;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    line-height: 70px;
+    box-shadow: 0px 1px 3px -1px rgba(0, 0, 0, 0.1);
+    opacity: .95;
+}
+
+.nav-logo {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url(http://img1.vued.vanthink.cn/vued7cecc028b8b640e58157bf4f2dd17184.png);
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.nav-title {
+    position: absolute;
+    top: 45px;
+    left: 30px;
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.menu{
+  display: none;
+}
+.nav-list {
+    float: right;
+    z-index: 100;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px;
+    margin-left: 2rem;
+    transition: all .25s ease;
+    text-align: right;
+}
+
+
+
+.nav-list a {
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: all .25s ease;
+    color: #444;
+}
+
+.nav-list:hover a {
+    opacity: 1;
+    color:#111;
+}
+.nav-list a.active{
+    color:#000;
+}
+.nav-list .icon-github{
+  margin-top:2px;
+  transform:translateY(4px)
+}
+aside{
+    float: left;
+    position: relative;
+    width: 220px;
+    padding: 100px 15px 40px 20px;
+    h4{
+      margin: 0;
+      background-color: #bbb;
+      color: #fff;
+      padding: 10px;
+      font-size: 15px;
+    }
+    ul{
+        background-color: #e1e1e1;
+        padding-bottom: 20px;
+    }
+    li{
+        margin-bottom: 5px;
+        margin-top: 0;
+    }
+    a{
+        display: inline-block;
+        line-height: 30px;
+        color: #777;
+        padding-left: 15px;
+        &.active{
+            color: @peter-river;
+        }
+    }
+
+}
+
+
+
+.main{
+    margin-left: 240px;
+    max-width: 900px;
+    min-height: 400px;
+    padding: 100px 20px;
+
+    .components {
+      text-align: left;
+
+      .center{
+        text-align: center;
+        padding-bottom: 20px;
+      }
+    }
+}
+
+.ft{
+    background: #fff;
+    padding-top: 120px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+.ft .icon-list a{
+    position: relative;
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    margin: 20px;
+}
+
+.ft .other-info {
+	font-size: 13px;
+  color:#888;
+}
+
+.ft .lang-list a {
+  margin: 0 10px;
+  color: #999;
+
+  &.active {
+    color: @emerald;
+  }
+}
+
+@media all and (max-width: 764px) {
+  .nav{
+    height: 40px;
+    line-height: 40px;
+
+  }
+  .menu {
+    margin-left: 10px;
+    margin-top: 4px;
+    display: inline-block;
+    .svg-icon{
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .nav-logo {
+    display: none;
+  }
+  .nav-list{
+    margin-top: 0;
+  }
+
+
+  aside{
+    z-index: 9;
+    position: fixed;
+    left: -250px;
+    top: 40px;
+    bottom: 0;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 3px 4px 5px rgba(0,0,0,.25);
+    transition: left ease .25s;
+    &.active{
+      left: 0;
+    }
+    h4, ul {
+      background-color: #fff;
+    }
+
+  }
+  .main {
+    margin-left: 10px;
+    padding-top: 60px;
+  }
+
+  .ft .icon-list a{
+    width: 40px;
+    margin: 15px;
+    img{
+      width: 100%;
+    }
+  }
+}
