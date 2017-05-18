@@ -2,8 +2,14 @@
     "extends": "airbnb",
     "plugins": [
         "import",
-         "react"
+        "react"
     ],
+    "env": {
+      "browser": 1
+    },
+    "rules": {
+      "prefer-template": 0
+    },
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",

@@ -1,9 +1,14 @@
 import React from 'react';
-
+import vendor from '../lib/vendor'
 
 export default class Ft extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      lan: window.lan || 'cn'
+    };
+    this.changeCn = this.changeCn.bind(this);
+    this.changeEn = this.changeEn.bind(this);
   }
 
   render() {
@@ -25,10 +30,25 @@ export default class Ft extends React.Component {
         </div>
         <p className="other-info">All Rights Reserved By Vanthink-UED</p>
         <p className="lang-list">
-          <a href="javascript:;" title="中文文档" className="{this.state.lan == 'cn' ? 'active' : ''}" onclick="changeCn"> 🇨🇳 Chinese </a>
-          <a href="javascript:;" title="View Enlish Document" className="{this.state.lan == 'en' ? 'active' : ''}"  onclick="changeEn"> 🇺🇸 English </a>
+          <a href="javascript:;" title="中文文档" className={this.state.lan == 'cn' ? 'active' : ''} onClick={this.changeCn}> 🇨🇳 Chinese </a>
+          <a href="javascript:;" title="View Enlish Document" className={this.state.lan == 'en' ? 'active' : ''}  onClick={this.changeEn}> 🇺🇸 English </a>
         </p>
     </div>
     );
   }
+
+  changeCn() {
+    vendor.setLocalData('lan', 'cn');
+    location.href="./index.html#/cn/home";
+    location.reload();
+  }
+
+  changeEn() {
+    vendor.setLocalData('lan', 'en');
+    location.href="./index.html#/en/home";
+    location.reload();
+  }
+
+
+
 };

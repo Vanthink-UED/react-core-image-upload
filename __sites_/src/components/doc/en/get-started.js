@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactCoreImageUpload  from '../../../src/react-core-image-upload';
+import ReactCoreImageUpload from '../../../src/index';
 import Highlight from 'react-highlight';
 
 export default class GetStarted extends React.Component {
@@ -13,26 +13,26 @@ export default class GetStarted extends React.Component {
 
   render() {
     return (
-      <div class="components">
+      <div className="components">
         <h3>快速开始</h3>
         <p>使用 npm 安装依赖</p>
-        <pre v-highlightjs><code className="bash">npm install vue-core-image-upload --save</code></pre>
+        <pre><code className="bash">npm install vue-core-image-upload --save</code></pre>
         <p>安装完成后，编辑源码</p>
         <Highlight className="html">
-        {`&lt;template&gt;
-        &lt;div class="center"&gt;
-          &lt;vue-core-image-upload
+        {`<template>
+          <div class="center">
+          <vue-core-image-upload
             class="btn btn-primary"
             :crop="false"
             @imageuploaded="imageuploaded"
             :data="data"
             :max-file-size="5242880"
-            url="http://101.198.151.190/api/upload.php" &gt;
-          &lt;/vue-core-image-upload&gt;
-        &lt;/div&gt;
-        &lt;/template&gt;
+            url="http://101.198.151.190/api/upload.php" >
+          </vue-core-image-upload>
+        </div>
+        </template>
 
-        &lt;script&gt;
+        <script>
         import VueCoreImageUpload from 'vue-core-image-upload'
 
         export default {
@@ -52,7 +52,7 @@ export default class GetStarted extends React.Component {
             }
           }
         };
-        &lt;/script&gt;`
+        </script>`
         }
       </Highlight>
       <h5>Code Example</h5>

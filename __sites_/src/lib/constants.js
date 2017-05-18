@@ -1,4 +1,4 @@
-
+// all routers
 let routers = [
   {
     name: 'Home',
@@ -10,11 +10,11 @@ let routers = [
   },
   {
     name: 'Props',
-    cn_name: '基本属性'
+    cn_name: '基本属性',
   },
   {
     name: 'Events',
-    cn_name: '响应事件'
+    cn_name: '响应事件',
   },
   {
     name: 'Custom Component',
@@ -34,15 +34,15 @@ let routers = [
   },
   {
     name: 'Compress Image',
-    cn_name: '压缩图片'
+    cn_name: '压缩图片',
   },
   {
     name: 'Post Data',
-    cn_name: '向服务端发送数据'
+    cn_name: '向服务端发送数据',
   },
   {
     name: 'Others',
-    cn_name: '其他 & 问题反馈'
+    cn_name: '其他 & 问题反馈',
   }
 ]
 
