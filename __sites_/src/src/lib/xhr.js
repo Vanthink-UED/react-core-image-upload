@@ -1,7 +1,8 @@
 /**
  * simple ajax handler
  **/
- // ADD sendAsBinary compatibilty to older browsers
+
+ //ADD sendAsBinary compatibilty to older browsers
  if (XMLHttpRequest.prototype.sendAsBinary === undefined) {
    XMLHttpRequest.prototype.sendAsBinary = function(string) {
      var bytes = Array.prototype.map.call(string, function(c) {
@@ -12,6 +13,7 @@
  }
 
 module.exports = function (method, url, headers, data, callback, err, isBinary) {
+
   const r = new XMLHttpRequest();
   const error = err || function () {
     console.error('AJAX ERROR!');

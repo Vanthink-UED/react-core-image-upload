@@ -21,14 +21,14 @@ class ReactCoreImageUpload extends React.Component {
         height: 0,
       }
     };
-    if (this.props.multiple) {
+    if (this.multiple) {
       this.name = this.props.inputOfFile + '[]';
     } else {
       this.name = this.props.inputOfFile;
     }
     this.change = this.change.bind(this);
     this.doCrop = this.doCrop.bind(this);
-    this.doResize = this.doCrop.bind(this);
+    this.doResize = this.doResize.bind(this);
     this.cancel = this.cancel.bind(this);
   }
 
@@ -53,7 +53,7 @@ class ReactCoreImageUpload extends React.Component {
         </form>
         <div className="g-core-image-corp-container" style={{ display: this.state.hasImage ? 'block' : 'none' }}>
           <Crop
-            ref="cropBox"
+            ref={(re) => this.cropbox = re}
             isResize={this.props.resize && !this.props.crop}
             ratio={this.props.ratio}>
           </Crop>
@@ -62,13 +62,13 @@ class ReactCoreImageUpload extends React.Component {
               <p className="btn-groups">
                 <button
                   type="button"
-                  onClick="doCrop"
+                  onClick={this.doCrop}
                   className="btn btn-upload">
                   {this.props.cropBtn.ok}
                 </button>
                 <button
                   type="button"
-                  onClick="cancel"
+                  onClick={this.cancel}
                   className="btn btn-cancel">
                   {this.props.cropBtn.cancel}
                 </button>
@@ -77,13 +77,13 @@ class ReactCoreImageUpload extends React.Component {
               <p className="btn-groups">
                 <button
                   type="button"
-                  onClick="doResize"
+                  onClick={this.doResize}
                   className="btn btn-upload">
                   {this.props.resizeBtn.ok}
                 </button>
                 <button
                   type="button"
-                  onClick="cancel"
+                  onClick={this.cancel}
                   className="btn btn-cancel">
                   {this.props.resizeBtn.cancel}
                 </button>
@@ -96,11 +96,9 @@ class ReactCoreImageUpload extends React.Component {
 
   __dispatch(name, res) {
     if (this.props[name] && typeof this.props[name] === 'function') {
-      console.log(arguments);
       this.props[name].apply(this, Array.from(arguments).slice(1));
     }
   }
-
 
   __find(ele) {
     let dq = document.getElementById(this.state.formID);
@@ -111,10 +109,10 @@ class ReactCoreImageUpload extends React.Component {
     let fileVal = this.__find('input').value.replace(/C:\\fakepath\\/i, "");
     let fileExt = fileVal.substring(fileVal.lastIndexOf(".") + 1);
     const extensionsArr = this.props.extensions;
-    if(extensionsArr.length>1) {
+    if (extensionsArr.length > 1 ) {
         var reg = new RegExp('^[' + extensionsArr.join('|') + ']+$','i');
         if (!reg.test(fileExt)) {
-            return this.props.errorHandle('TYPE ERROR');
+            return this.__dispatch('errorHandle'. errorCode['FILE_FORMAT']);
         }
     }
     if (e.target.files[0].size > this.props.maxFileSize) {
@@ -145,7 +143,6 @@ class ReactCoreImageUpload extends React.Component {
     }
   }
   __showImage() {
-    document.body.style.overflow = 'hidden';
     this.setState({
       hasImage: true
     })
@@ -156,6 +153,8 @@ class ReactCoreImageUpload extends React.Component {
     let self = this;
     reader.onload = function(e) {
       let src = e.target.result;
+      overflowVal = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       self.__initImage(src);
 
     }
@@ -165,6 +164,7 @@ class ReactCoreImageUpload extends React.Component {
     let pic = new Image();
     let self = this;
     pic.src = src;
+    const cropBox = this.cropbox;
     pic.onload= function() {
       self.setState({
         image:{
@@ -173,64 +173,10 @@ class ReactCoreImageUpload extends React.Component {
           height: pic.naturalHeight,
         }
       });
-      self.__reseyLayout();
-      self.__initCropBox();
+      self.imgChangeRatio = cropBox.setImage(src, pic.naturalWidth, pic.naturalHeight);
     }
   }
 
-  // init crop area
-  __initCropBox (){
-    let $selectCropBox = this.__find('.select-recorte');
-    let $wrap = this.__find('.g-crop-image-principal');
-    let imageWidth = parseInt($wrap.style['width']),
-        imageHeight = parseInt($wrap.style['height']);
-    let ratioW = this.props.cropRatio.split(':')[0],
-        ratioH = this.props.cropRatio.split(':')[1];
-    let Swidth = (imageWidth / 100) * 80;
-    let Sheight = (Swidth / ratioW) * ratioH;
-    $selectCropBox.style.cssText = 'width:' + Swidth + 'px;height: ' + Sheight + 'px;left:' + (imageWidth - Swidth) / 2 + 'px;top:' + (imageHeight - Sheight) / 2 + 'px;';
-    if (Sheight > imageHeight) {
-      Sheight = (imageHeight / 100) * 80;
-      Swidth = (Sheight * ratioW) / ratioH;
-      $selectCropBox.style.cssText = 'width:' + Swidth + 'px;height:' + Sheight + 'px;left:' + (imageWidth - Swidth) / 2 + 'px;top:' + (imageHeight - Sheight) / 2 + 'px';
-    };
-
-  }
-
-  // reset layout
-  __reseyLayout () {
-    let H = window.innerHeight - 80,
-        W = window.innerWidth - 60,
-        imageWidth = this.state.image.width,
-        imageHeight = this.state.image.height;
-    // caculate the image ratio
-    let R = imageWidth / imageHeight;
-    let Rs = W / H;
-    let $container = this.__find('.g-crop-image-principal');
-    if (R > Rs) {
-      this.setState({
-        image:{
-          src: this.state.image.src,
-          width:W,
-          height: W / R,
-        }
-      });
-      // I don't hope to use a state to change the container stye
-      $container.style.cssText = 'width:' + W + 'px;height:' + W / R + 'px;margin-top:' + (H - W / R) / 2 + 'px';
-    } else {
-       this.setState({
-        image:{
-          src: this.state.image.src,
-          width: H * R,
-          height: H,
-        }
-      });
-
-      $container.style.cssText = 'width:' + H * R + 'px;height:' + H + 'px;margin-left:' + (W - H * R) / 2 + 'px;';
-    }
-    this.imgChangeRatio = imageWidth / this.state.image.width;
-
-  }
   resizeImage(progress) {
     const cropBox = this.$refs.cropBox;
     cropBox.resizeImage(progress);
@@ -238,9 +184,9 @@ class ReactCoreImageUpload extends React.Component {
 
   doCrop(e) {
     this.__setData('crop');
-    const cropBox = this.$refs.cropBox;
+    const cropBox = this.cropbox;
     const upload = this.__setUpload(e.target);
-    if (this.crop === 'local') {
+    if (this.props.crop === 'local') {
       const targetImage = cropBox.getCropImage();
       this.data.comprose = 100 - this.compress;
       return canvasHelper.crop(targetImage, this.data, (code) => {
@@ -252,9 +198,9 @@ class ReactCoreImageUpload extends React.Component {
 
   doResize(e) {
     this.__setData('reszie');
-    const cropBox = this.$refs.cropBox;
+    const cropBox = this.cropbox;
     const upload = this.__setUpload(e.target);
-    if (this.resize === 'local') {
+    if (this.props.resize === 'local') {
       const targetImage = cropBox.getCropImage();
       this.data.comprose = 100 - this.compress;
       return canvasHelper.resize(targetImage, this.data, (code) => {
@@ -269,7 +215,7 @@ class ReactCoreImageUpload extends React.Component {
       this.data = {};
     }
     this.data["request"] = type;
-    const cropBox = this.$refs.cropBox;
+    const cropBox = this.cropbox;
     const newCSSObj = cropBox.getCropData();
     for (const k of Object.keys(newCSSObj)) {
       this.data[k] = newCSSObj[k];
@@ -330,11 +276,11 @@ class ReactCoreImageUpload extends React.Component {
       data = {
         type: this.files[0]['type'],
         filename: this.files[0]['name'],
-        filed: this.inputOfFile,
+        filed: this.props.inputOfFile,
         base64Code: base64Code
       };
-      if (typeof this.data === 'object') {
-        data = Object.assign(this.data, data);
+      if (typeof this.props.data === 'object') {
+        data = Object.assign(this.props.data, data);
       }
     } else {
       data = new FormData();
@@ -349,7 +295,7 @@ class ReactCoreImageUpload extends React.Component {
         }
       }
     }
-    xhr('POST',this.props.url, this.props.headers, data, done, errorUpload, isBinary);
+    xhr('POST', this.props.url, this.props.headers, data, done, errorUpload, isBinary);
   }
 }
 ReactCoreImageUpload.propTypes = propTypes;
