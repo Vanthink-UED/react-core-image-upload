@@ -14,8 +14,9 @@ export default class CnMultipleFile extends React.Component {
   render() {
     return (
       <div className="components">
-        <h3>压缩图片</h3>
-        <p>设置<code>compress</code>的数值，你可以在上传之前进行图片的本地压缩。其中 compress 为 0 表示不压缩，数据越大，图片的质量越差，且最大值不能大于100。</p>
+        <h3>Compress Image</h3>
+        <p>Props <code>compress</code> means the quality of the image you want to compress via browser
+    and then send the compressed image to the server. </p>
         <div className="center">
           <p><img width="300" src={this.state.src} /></p>
           <ReactCoreImageUpload

@@ -20,7 +20,7 @@ export default class GetStarted extends React.Component {
         <p>安装完成后，编辑源码</p>
         <Highlight className="javascript">
         {`import React from 'react';
-import ReactCoreImageUpload  from '../../../src/react-core-image-upload';
+import ReactCoreImageUpload  from 'react-core-image-upload';
 
 export default class GetStarted extends React.Component {
   constructor(props) {

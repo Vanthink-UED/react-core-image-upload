@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import xhr from './lib/xhr';
+import xhr from 'core-image-xhr';
 import defaultProps from './props';
 import propTypes from './propTypes';
 import Crop from './components/crop';
@@ -35,7 +35,7 @@ class ReactCoreImageUpload extends React.Component {
   render() {
     return (
       <div className={this.props.className + ' g-core-image-upload-btn'} id={this.state.formID}>
-        {this.props.text}
+        {this.props.children ? this.props.children: this.props.text}
         <form
           className="g-core-image-upload-form"
           method="post"
@@ -188,8 +188,9 @@ class ReactCoreImageUpload extends React.Component {
     const upload = this.__setUpload(e.target);
     if (this.props.crop === 'local') {
       const targetImage = cropBox.getCropImage();
-      this.data.comprose = 100 - this.compress;
-      return canvasHelper.crop(targetImage, this.data, (code) => {
+      this.props.data.comprese = 100 - this.props.compress;
+      return canvasHelper.crop(targetImage, this.props.data, (code) => {
+        console.log(code);
         upload(code);
       })
     }
@@ -211,23 +212,20 @@ class ReactCoreImageUpload extends React.Component {
   }
 
   __setData(type) {
-    if (typeof this.data !== 'object') {
-      this.data = {};
-    }
-    this.data["request"] = type;
+    this.props.data["request"] = type;
     const cropBox = this.cropbox;
     const newCSSObj = cropBox.getCropData();
     for (const k of Object.keys(newCSSObj)) {
-      this.data[k] = newCSSObj[k];
+      this.props.data[k] = newCSSObj[k];
     }
-    if (this.maxWidth) {
-      this.data['maxWidth'] = this.maxWidth;
+    if (this.props.maxWidth) {
+      this.props.data['maxWidth'] = this.maxWidth;
     }
     if (this.maxHeight) {
-      this.data['maxHeight'] = this.maxHeight;
+      this.props.data['maxHeight'] = this.maxHeight;
     }
     if (this.minWidth) {
-      this.data['minWidth'] = this.minWidth;
+      this.props.data['minWidth'] = this.minWidth;
     }
   }
   __setUpload(btn) {
@@ -243,7 +241,9 @@ class ReactCoreImageUpload extends React.Component {
   }
 
   cancel() {
-    this.hasImage = false;
+    this.setState({
+      hasImage: false,
+    })
     document.body.style.overflow = overflowVal;
     this.files = '';
     this.__find('input').value = '';
@@ -287,10 +287,10 @@ class ReactCoreImageUpload extends React.Component {
       for (let i = 0;i < this.files.length; i++) {
         data.append(this.name, this.files[i]);
       }
-      if (typeof this.data === 'object') {
-        for(let k in this.data) {
-          if(this.data[k] !== undefined) {
-            data.append(k,this.data[k]);
+      if (typeof this.props.data === 'object') {
+        for(let k in this.props.data) {
+          if(this.props.data[k] !== undefined) {
+            data.append(k,this.props.data[k]);
           }
         }
       }

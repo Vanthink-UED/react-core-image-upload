@@ -10,7 +10,7 @@ export default class EnHome extends React.Component {
     return (
       <div className="components c-home">
         <p className="center">
-          <img src="http://img1.vued.vanthink.cn/vuedd7432dee5fe174ac48ad8190b85b79d5.png" alt="vue core image upload" />
+          <img src="http://img1.vued.vanthink.cn/vuedb0c434fffc3c4ac840661ea7e0efe0f7.png" alt="react core image upload" />
         </p>
         <p className="btn-wrap center">
           <a className="btn btn-primary btn-go-started" href="#/en/get-started">Get Started</a>

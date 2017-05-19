@@ -14,11 +14,11 @@
 
 module.exports = function (method, url, headers, data, callback, err, isBinary) {
 
-  const r = new XMLHttpRequest();
-  const error = err || function () {
+  var r = new XMLHttpRequest();
+  var error = err || function () {
     console.error('AJAX ERROR!');
   };
-  const boundary = 'vuecodeimageupload';
+  const boundary = 'webcodeimageupload';
   // Binary?
   let binary = false;
   if (method === 'blob') {
@@ -62,7 +62,7 @@ module.exports = function (method, url, headers, data, callback, err, isBinary) 
       for (const k of keyArr) {
         if (['filed', 'filename', 'type', 'base64Code'].indexOf(k) == -1) {
           data += ['--' + boundary, 'Content-Disposition: form-data; name="' + k + '";', '', ''].join('\r\n');
-          data += [typeof keyData[k] === 'object' ? JSON.stringify(keyData[k]) : keyData[k], ''].join('\r\n');
+          data += [typeof keyData[k] === 'object' ? JSON.stringify(keyData[k]) : encodeURI(keyData[k]), ''].join('\r\n');
         }
       }
     }
@@ -83,11 +83,9 @@ module.exports = function (method, url, headers, data, callback, err, isBinary) 
     for (x in headers) {
       r.setRequestHeader(x, headers[x]);
     }
-    if (isBinary) {
-      r.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-    }
   }
   if (isBinary) {
+    r.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
     return r.sendAsBinary(data);
   }
   r.withCredentials = true;
@@ -95,8 +93,8 @@ module.exports = function (method, url, headers, data, callback, err, isBinary) 
   return r;
   // Headers are returned as a string
   function headersToJSON(s) {
-    const o = {};
-    const reg = /([a-z\-]+):\s?(.*);?/gi;
+    var o = {};
+    var reg = /([a-z\-]+):\s?(.*);?/gi;
     let m;
     while (m = reg.exec(s)) {
       o[m[1]] = m[2];

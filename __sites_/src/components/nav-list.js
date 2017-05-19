@@ -19,10 +19,16 @@ export default class NavList extends React.Component {
     this.setUrl = this.setUrl.bind(this);
   }
 
-  setUrl(url) {
-    this.url = url;
-    //const $aside = document.querySelector('aside');
-    // $aside.classList.remove('active');
+  setUrl(e) {
+    const url = /\#(.*)/.exec(e.target.href)[0];
+    this.setState({
+      url,
+    });
+    const $aside = document.querySelector('aside');
+    if ($aside) {
+      $aside.classList.remove('active');
+    }
+
   }
 
   render() {
@@ -32,7 +38,7 @@ export default class NavList extends React.Component {
       const item = this.state.list[i];
       lis.push(
         <li key={item.url}>
-          <a href={item.url} className={classname} onClick={this.setUrl(item.url)}>{item.name}</a>
+          <a href={item.url} className={classname} onClick={this.setUrl}>{item.name}</a>
         </li>
       );
     }

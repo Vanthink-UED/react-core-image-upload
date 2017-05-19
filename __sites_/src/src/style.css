@@ -144,54 +144,6 @@
   position: relative;
 }
 
-.g-core-image-corp-container .g-crop-image-box .select-recorte {
-  position: absolute;
-  background: #fff;
-  opacity: .55;
-  border: 2px dashed rgba(0,0,0,.8);
-  cursor: move;
-}
-
-.g-core-image-corp-container .g-resize {
-  z-index: 90;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  cursor: se-resize;
-}
-
-.g-core-image-corp-container .g-resize:after {
-  content: '';
-  display: block;
-  position: absolute;
-  background: rgba(0,0,0,.8);
-  width: 5px;
-  height: 5px;
-  right: 0;
-  bottom: 0;
-}
-
-.g-core-image-corp-container .g-e-resize {
-  cursor: e-resize;
-  position: absolute;
-  width: 7px;
-  right: -5px;
-  top: 0;
-  height: 100%;
-}
-
-.g-core-image-corp-container .g-s-resize {
-  position: absolute;
-  cursor: s-resize;
-  height: 7px;
-  width: 100%;
-  bottom: -5px;
-  left: 0;
-}
-
-// crop modal
 .g-crop-image-principal{
   overflow: hidden;
   background-color: #fff;
@@ -300,7 +252,7 @@
    width:200px;
    margin-left: -100px;
    left: 50%;
-   background-color: #a8f9ca;
+   background-color: #9cd6fd;
    box-shadow: 0 2px 3px -1px rgba(0,0,0,.3);
  }
  .g-resize-bar .g-resize-highlight{
@@ -308,7 +260,7 @@
    left: 0;
    top:0;
    height: 6px;
-   background-color: #27ae60;
+   background-color: #3498db;
    border-radius: 3px;
  }
  .g-resize-bar .circle-btn{

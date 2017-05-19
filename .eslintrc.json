@@ -8,7 +8,8 @@
       "browser": 1
     },
     "rules": {
-      "prefer-template": 0
+      "prefer-template": 0,
+      "no-console": 0
     },
     "parserOptions": {
         "ecmaVersion": 6,

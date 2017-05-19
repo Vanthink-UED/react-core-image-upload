@@ -10,7 +10,7 @@ export default class CnHome extends React.Component {
     return (
       <div className="components c-home">
         <p className="center">
-          <img src="http://img1.vued.vanthink.cn/vuedf40837f7b1171e4dcab9f78a1fd26768.png" alt="react-core-image-upload" />
+          <img src="http://img1.vued.vanthink.cn/vuedb0c434fffc3c4ac840661ea7e0efe0f7.png" alt="react-core-image-upload" />
         </p>
         <p className="btn-wrap center">
           <a className="btn btn-primary btn-go-started" href="#/cn/get-started">快速开始</a>

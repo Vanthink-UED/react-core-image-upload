@@ -4,8 +4,9 @@ import vendor from '../lib/vendor'
 export default class Ft extends React.Component {
   constructor(props) {
     super(props);
+    const lan = vendor.getLocalData('lan') || 'cn';
     this.state = {
-      lan: window.lan || 'cn'
+      lan,
     };
     this.changeCn = this.changeCn.bind(this);
     this.changeEn = this.changeEn.bind(this);

@@ -14,7 +14,9 @@
   "author": "JackPu <kakashjack@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "core-image-xhr": "^1.0.1",
     "less-loader": "^2.2.3",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-highlight": "^0.10.0",
