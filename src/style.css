@@ -1,6 +1,7 @@
 .g-core-image-upload-btn {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .g-core-image-upload-form {
@@ -143,49 +144,135 @@
   position: relative;
 }
 
-.g-core-image-corp-container .g-crop-image-box .select-recorte {
-  position: absolute;
-  background: #fff;
-  opacity: .55;
-  border: 2px dashed rgba(0,0,0,.8);
-  cursor: move;
+.g-crop-image-principal{
+  overflow: hidden;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef),-webkit-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);
+  background-image: -moz-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef),-moz-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);
+  background-image: -o-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef),-o-linear-gradient(bottom left, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);
+  background-image: linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef),linear-gradient(to top right, #efefef 25%, transparent 25%, transparent 75%, #efefef 75%, #efefef);
+  background-position: 0 0,10px 10px;
+  -webkit-background-size: 21px 21px;
+  background-size: 21px 21px;
 }
-
-.g-core-image-corp-container .g-resize {
-  z-index: 90;
+.image-aside{
+  overflow: hidden;
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  cursor: se-resize;
+  right: 30px;
+  left:30px;
+  top:70px;
+  bottom:40px;
+  text-align: center;
 }
-
-.g-core-image-corp-container .g-resize:after {
-  content: '';
-  display: block;
+.image-aside .image-wrap{
   position: absolute;
-  background: rgba(0,0,0,.8);
-  width: 5px;
-  height: 5px;
-  right: 0;
-  bottom: 0;
-}
-
-.g-core-image-corp-container .g-e-resize {
-  cursor: e-resize;
-  position: absolute;
-  width: 7px;
-  right: -5px;
+  left: 0;
   top: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-shadow: 0 3px 5px -2px rgba(0,0,0,.25);
+  background-size: cover;
+}
+.image-mask{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width:100%;
   height: 100%;
 }
-
-.g-core-image-corp-container .g-s-resize {
+.image-mask .mask {
   position: absolute;
-  cursor: s-resize;
-  height: 7px;
-  width: 100%;
-  bottom: -5px;
-  left: 0;
+  background-color: rgba(255,255,255,.6);
 }
+.crop-box{
+  z-index: 2000;
+  box-sizing: border-box;
+  position: absolute;
+  background: none;
+  cursor: move;
+  width:100px;
+  height: 100px;
+  border:1px solid rgba(255,255,255, .95);
+}
+.crop-box:after,
+.crop-box:before{
+  content: '';
+  display: block;
+  opacity: 0;
+  position: absolute;
+  left: 33.3333%;
+  top: 0;
+  width: 33.334%;
+  height: 100%;
+  background-color: transparent;
+  border-color: rgba(255,255,255,.7);
+  border-style: solid;
+  border-width: 0;
+}
+.crop-box:active::before,
+.crop-box:active::after{
+  opacity: 1;
+}
+.crop-box:before{
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+.crop-box:after{
+  top: 33.3333%;
+  left: 0;
+  height: 33.3334%;
+  width: 100%;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+.crop-box .g-resize{
+  display: inline-block;
+  z-index: 1910;
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  cursor: se-resize;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px -2px rgba(0,0,0,.25);
+}
+
+.g-resize-bar{
+   position: absolute;
+   bottom: 0px;
+   margin: 17px auto;
+   height: 6px;
+   border-radius: 3px;
+   width:200px;
+   margin-left: -100px;
+   left: 50%;
+   background-color: #9cd6fd;
+   box-shadow: 0 2px 3px -1px rgba(0,0,0,.3);
+ }
+ .g-resize-bar .g-resize-highlight{
+   position: absolute;
+   left: 0;
+   top:0;
+   height: 6px;
+   background-color: #3498db;
+   border-radius: 3px;
+ }
+ .g-resize-bar .circle-btn{
+   display: block;
+   position: absolute;
+   left:0;
+   top: -5px;
+   width: 14px;
+   height: 14px;
+   margin-left: -7px;
+   background-color: #fff;
+   border-radius: 7px;
+   box-shadow: 0 2px 3px -2px rgba(0,0,0,.6), 0 -2px 3px -2px rgba(0,0,0,.55);
+   border-width: 0;
+ }

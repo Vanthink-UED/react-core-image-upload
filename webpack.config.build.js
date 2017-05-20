@@ -1,11 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: [
-      "webpack-dev-server/client?http://localhost:9000",
-      'webpack/hot/only-dev-server',
-      "./src/index"
-    ],
+  entry: "./src/react-core-image-upload",
   output: {
     path: __dirname + '/',
     filename: "react-core-image-upload.js",
@@ -14,7 +10,7 @@ module.exports = {
     "react":"React",
     "react-dom":'ReactDOM'
   },
-  
+
   module: {
     loaders: [
       {

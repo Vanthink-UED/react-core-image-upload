@@ -1,11 +1,24 @@
 /**
  * simple ajax handler
  **/
-module.exports = function (method, url, headers, data, callback, err) {
-  const r = new XMLHttpRequest();
-  const error = err || function () {
+
+ //ADD sendAsBinary compatibilty to older browsers
+ if (XMLHttpRequest.prototype.sendAsBinary === undefined) {
+   XMLHttpRequest.prototype.sendAsBinary = function(string) {
+     var bytes = Array.prototype.map.call(string, function(c) {
+         return c.charCodeAt(0) & 0xff;
+     });
+     this.send(new Uint8Array(bytes).buffer);
+   };
+ }
+
+module.exports = function (method, url, headers, data, callback, err, isBinary) {
+
+  var r = new XMLHttpRequest();
+  var error = err || function () {
     console.error('AJAX ERROR!');
   };
+  const boundary = 'webcodeimageupload';
   // Binary?
   let binary = false;
   if (method === 'blob') {
@@ -40,25 +53,20 @@ module.exports = function (method, url, headers, data, callback, err) {
   // Should we add the query to the URL?
   if (method === 'GET' || method === 'DELETE') {
     data = null;
-  }
-  else if (data && typeof (data) !== 'string' && !(data instanceof FormData) && !(data instanceof File) && !(data instanceof Blob)) {
-    // Loop through and add formData
-    var f = new FormData();
-    for (x in data)
-      if (data.hasOwnProperty(x)) {
-        if (data[x] instanceof HTMLInputElement) {
-          if ('files' in data[x] && data[x].files.length > 0) {
-            f.append(x, data[x].files[0]);
-          }
-        }
-        else if (data[x] instanceof Blob) {
-          f.append(x, data[x], data.name);
-        }
-        else {
-          f.append(x, data[x]);
+  } else if (isBinary) {
+    const keyData = data;
+    const code = data.base64Code.replace('data:' + data.type + ';base64,', '');
+    data = ['--' + boundary, 'Content-Disposition: form-data; name="' + data.filed + '"; filename="' + data.filename + '"', 'Content-Type: ' + data.type, '', window.atob(code), ''].join('\r\n');
+    const keyArr = Object.keys(keyData);
+    if (keyArr.length > 4) {
+      for (const k of keyArr) {
+        if (['filed', 'filename', 'type', 'base64Code'].indexOf(k) == -1) {
+          data += ['--' + boundary, 'Content-Disposition: form-data; name="' + k + '";', '', ''].join('\r\n');
+          data += [typeof keyData[k] === 'object' ? JSON.stringify(keyData[k]) : encodeURI(keyData[k]), ''].join('\r\n');
         }
       }
-    data = f;
+    }
+    data += '--' + boundary + '--';
   }
   // Open the path, async
   r.open(method, url, true);
@@ -76,12 +84,17 @@ module.exports = function (method, url, headers, data, callback, err) {
       r.setRequestHeader(x, headers[x]);
     }
   }
+  if (isBinary) {
+    r.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+    return r.sendAsBinary(data);
+  }
+  r.withCredentials = true;
   r.send(data);
   return r;
   // Headers are returned as a string
   function headersToJSON(s) {
-    const o = {};
-    const reg = /([a-z\-]+):\s?(.*);?/gi;
+    var o = {};
+    var reg = /([a-z\-]+):\s?(.*);?/gi;
     let m;
     while (m = reg.exec(s)) {
       o[m[1]] = m[2];

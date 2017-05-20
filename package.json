@@ -1,6 +1,6 @@
 {
   "name": "react-core-image-upload",
-  "version": "2.0.1",
+  "version": "2.2.1",
   "description": "a component for image to upload and crop",
   "keywords": [
     "react",
@@ -10,7 +10,7 @@
     "component",
     "core"
   ],
-  "main": "src/react-core-image-upload.js",
+  "main": "react-core-image-upload.js",
   "repository": {
     "url": "https://github.com/Vanthink-UED/react-core-image-upload.git",
     "type": "git"
@@ -23,6 +23,8 @@
   "author": "JackPu <kakashjack@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "core-image-xhr": "^1.0.1",
+    "prop-types": "^15.5.10",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2"

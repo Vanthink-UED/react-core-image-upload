@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
+import ReactCoreImageUpload from './react-core-image-upload';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+module.exports = ReactCoreImageUpload;
