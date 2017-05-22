@@ -18,7 +18,7 @@
     "less-loader": "^2.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-core-image-upload": "^2.2.0",
+    "react-core-image-upload": "^2.2.1",
     "react-dom": "^15.5.4",
     "react-highlight": "^0.10.0",
     "react-highlight.js": "^1.0.5",

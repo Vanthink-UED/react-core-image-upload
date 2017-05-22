@@ -5,17 +5,19 @@ module.exports = {
   output: {
     path: __dirname + '/',
     filename: "react-core-image-upload.js",
+    libraryTarget: 'umd',
   },
   externals: {
     "react":"React",
-    "react-dom":'ReactDOM'
+    "react-dom":'ReactDOM',
+    'prop-types': 'prop-types'
   },
 
   module: {
     loaders: [
       {
         test: /\.js?$/,
-        loaders: ["react-hot-loader/webpack",'babel-loader?presets[]=react,presets[]=es2015'],
+        loaders: ['babel-loader?presets[]=react,presets[]=es2015'],
         exclude: /node_modules/
       },
 
