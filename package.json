@@ -23,11 +23,11 @@
   "author": "JackPu <kakashjack@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "core-image-xhr": "^1.0.1",
+    "core-image-xhr": "^1.0.3",
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-      "react": "^15.3.2"
+    "react": "^15.3.2"
   },
   "devDependencies": {
     "babel": "^6.5.2",

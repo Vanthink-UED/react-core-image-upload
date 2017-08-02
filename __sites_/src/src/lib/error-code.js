@@ -1,9 +1,0 @@
-const SERVER_ERROR = 2500;
-const FILE_SIZE_ERROR = 2501;
-const FILE_FORMAT = 2502;
-
-export default {
-  SERVER_ERROR,
-  FILE_SIZE_ERROR,
-  FILE_FORMAT,
-};
