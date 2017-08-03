@@ -5,11 +5,19 @@
         "react"
     ],
     "env": {
-      "browser": 1
+      "browser": 1,
+      "mocha": 1
     },
     "rules": {
       "prefer-template": 0,
-      "no-console": 0
+      "no-console": 0,
+      "no-restricted-syntax": 0,
+      "no-underscore-dangle": 0,
+      "func-names": 0,
+      "space-before-function-paren": 0,
+      "no-param-reassign": 0,
+      "consistent-return": 0,
+      "no-pluplus": 0
     },
     "parserOptions": {
         "ecmaVersion": 6,

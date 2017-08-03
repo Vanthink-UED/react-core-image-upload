@@ -16,8 +16,7 @@
     "type": "git"
   },
   "scripts": {
-    "start": "webpack-dev-server --port 9000",
-    "build": "webpack --config ./webpack.config.build.js --progress --colors",
+    "build": "webpack --config ./build/webpack.config.build.js --progress --colors",
     "test": "karma start karma.conf.js"
   },
   "author": "JackPu <kakashjack@gmail.com>",
