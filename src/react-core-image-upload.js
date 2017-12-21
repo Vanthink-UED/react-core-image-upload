@@ -21,7 +21,7 @@ class ReactCoreImageUpload extends React.Component {
         height: 0,
       }
     };
-    if (this.multiple) {
+    if (this.props.multiple) {
       this.name = this.props.inputOfFile + '[]';
     } else {
       this.name = this.props.inputOfFile;
@@ -112,7 +112,7 @@ class ReactCoreImageUpload extends React.Component {
     if (extensionsArr.length > 1 ) {
         var reg = new RegExp('^[' + extensionsArr.join('|') + ']+$','i');
         if (!reg.test(fileExt)) {
-            return this.__dispatch('errorHandle'. errorCode['FILE_FORMAT']);
+            return this.__dispatch('errorHandle', errorCode['FILE_FORMAT']);
         }
     }
     if (e.target.files[0].size > this.props.maxFileSize) {
