@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactCoreImageUpload from '../../../src/index';
+import ReactCoreImageUpload from '../../../../../src/index';
 import Highlight from 'react-highlight';
 
 export default class GetStarted extends React.Component {

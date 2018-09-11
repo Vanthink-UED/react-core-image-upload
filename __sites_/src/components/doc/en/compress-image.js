@@ -1,6 +1,6 @@
 import React from 'react';
 import vendor from '../../../lib/vendor';
-import ReactCoreImageUpload  from '../../../src/index';
+import ReactCoreImageUpload from '../../../../../src/index';
 import Highlight from 'react-highlight.js';
 
 export default class CnMultipleFile extends React.Component {
