@@ -84,7 +84,7 @@ export default class ResizeBar extends React.Component {
     document.addEventListener('mouseup', stopMove, false);
   }
 };
-ResizeBar.PropTypes = {
+ResizeBar.propTypes = {
   minProgress: PropTypes.minProgress,
   resize: PropTypes.function,
 };
